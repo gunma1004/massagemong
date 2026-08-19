@@ -3,31 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>서울 출장 마사지 & 24시 프리미엄 홈케어 안내</title>
+    <title>마사지몽 | 서울 24시 프리미엄 힐링 테라피 & 홈케어 예약 플랫폼</title>
     
     <!-- 네이버/구글 검색엔진 소유확인 메타태그 -->
     <meta name="naver-site-verification" content="51468bf680484054a5c594928c99e601f9636509" />
     <meta name="google-site-verification" content="Fhw2xaTWUyknnUdX8K0AMxP5ChW30jU7Al4hkfxy_Bk" />
 
-    <!-- 검색엔진 최적화 메타태그 -->
-    <meta name="description" content="서울 전 지역 출장 마사지 및 24시 방문 테라피 전문 추천 안내. 프라이빗 아로마, 스웨디시, 홈케어 코스. 강남, 서초, 송파, 동작, 관악, 강동 30분 내 신속 방문.">
-    <meta name="keywords" content="서울 출장 마사지, 서울 출장, 강남 출장 마사지, 서초 출장 마사지, 송파 출장 마사지, 서울 24시 홈케어">
+    <!-- 검색엔진 최적화 메타태그 (메인: 출장마사지 키워드 제외 / 고급 테라피 및 홈케어 중심) -->
+    <meta name="description" content="꿈결 같은 일상의 쉼표 마사지몽! 서울 전 지역 24시 프리미엄 바디케어 & 힐링 테라피 전문 플랫폼. 아로마, 스웨디시, 타이 1:1 맞춤 케어 코스 안내.">
+    <meta name="keywords" content="마사지몽, 서울 테라피, 서울 홈케어, 강남 스파, 서초 테라피, 송파 힐링케어, 24시 바디케어, 프리미엄 스웨디시">
     <meta name="robots" content="index, follow">
     
     <!-- Open Graph (소셜 미디어 & 네이버 수집용) -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="서울 프리미엄 방문 테라피 안내">
-    <meta property="og:description" content="지친 일상을 채우는 프라이빗 힐링 서비스, 서울 전 지역 맞춤 방문 케어">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1200&q=80">
+    <meta property="og:site_name" content="마사지몽">
+    <meta property="og:title" content="마사지몽 | 서울 24시 프리미엄 바디 테라피 & 힐링 케어">
+    <meta property="og:description" content="꿈결 같은 힐링 케어 서비스, 서울·경기·인천 전 지역 맞춤 케어 플랫폼 마사지몽">
+    <meta property="og:image" content="/images/main-banner.jpg">
     <meta property="og:url" content="https://seoul-homecare.shop">
 
     <!-- 구조화된 데이터 (JSON-LD) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "서울 프리미엄 바디 케어 안내",
-      "description": "서울 전 지역 24시간 프라이빗 방문 힐링 케어 서비스 매장 및 코스 안내",
+      "@type": "WebSite",
+      "name": "마사지몽",
+      "alternateName": "MassageMong",
+      "description": "서울·경기·인천 전 지역 24시간 프라이빗 힐링 바디 테라피 플랫폼",
       "url": "https://seoul-homecare.shop"
     }
     </script>
@@ -46,7 +48,7 @@
             border-bottom: 2px solid #e74c3c; 
             position: sticky; 
             top: 0; 
-            z-index: 100;
+            z-index: 100; 
             box-shadow: 0 4px 12px rgba(0,0,0,0.5);
         }
         header h1 { font-size: 1.35rem; color: #ffffff; font-weight: 700; }
@@ -56,7 +58,7 @@
         .hero-banner {
             position: relative;
             background: linear-gradient(rgba(15, 17, 23, 0.75), rgba(15, 17, 23, 0.88)), 
-                        url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+                        url('images/main-banner.jpg') center/cover no-repeat;
             padding: 55px 20px;
             text-align: center;
             border-bottom: 1px solid #2a2d37;
@@ -73,7 +75,7 @@
             max-width: 900px; 
             width: 92%; 
             border-radius: 6px; 
-            font-size: 0.9rem;
+            font-size: 0.9rem; 
             color: #d1d5db;
         }
 
@@ -186,26 +188,34 @@
             margin-top: 4px;
         }
 
-        /* SEO 대응 지역 분류 (그리드 레이아웃) */
+        /* 지역별 권역 그리드 레이아웃 */
         .area-box { background: #161820; border: 1px solid #2a2d37; border-radius: 12px; padding: 22px; margin: 35px 0; }
-        .area-box h3 { color: #f1c40f; font-size: 1.1rem; margin-bottom: 15px; }
+        .area-box h3 { color: #f1c40f; font-size: 1.15rem; margin-bottom: 15px; }
+        .region-sub-title { font-size: 0.98rem; font-weight: bold; margin: 20px 0 10px; padding-left: 8px; border-left: 3px solid #e74c3c; }
+        .region-sub-title.gyeonggi { border-color: #2ecc71; color: #2ecc71; }
+        .region-sub-title.incheon { border-color: #3498db; color: #3498db; }
+        .region-sub-title.seoul { border-color: #e74c3c; color: #e74c3c; }
+
         .area-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-            gap: 12px;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 10px;
         }
         .area-item {
             background: #1a1c23;
             border: 1px solid #2a2d37;
-            padding: 12px;
+            padding: 10px 8px;
             border-radius: 8px;
-            font-size: 0.85rem;
-            color: #d1d5db;
+            font-size: 0.88rem;
+            text-align: center;
+            transition: all 0.2s;
         }
-        .area-item .gu-link { color: #f1c40f; font-weight: bold; font-size: 0.95rem; display: block; margin-bottom: 6px; text-decoration: underline; }
-        .area-item .dong-list { font-size: 0.8rem; color: #a0a5b1; line-height: 1.5; }
-        .area-item .dong-list a { color: #cccccc; margin-right: 3px; }
-        .area-item .dong-list a:hover { color: #e74c3c; text-decoration: underline; }
+        .area-item:hover {
+            border-color: #f1c40f;
+            background: #222634;
+        }
+        .area-item .gu-link { color: #e1e3e8; font-weight: 600; display: block; }
+        .area-item:hover .gu-link { color: #f1c40f; }
 
         /* 하단 푸터 */
         footer { text-align: center; padding: 25px 20px; font-size: 0.8rem; color: #7f8c8d; border-top: 1px solid #2a2d37; margin-top: 20px; }
@@ -215,35 +225,35 @@
 
     <!-- 헤더 -->
     <header>
-        <h1>서울 출장 마사지 <span>프리미엄 24시 방문 케어</span></h1>
+        <h1>마사지몽 <span>24시 프리미엄 홈케어 & 테라피 안내</span></h1>
     </header>
 
     <!-- 히어로 배너 이미지 영역 -->
     <div class="hero-banner">
-        <h2>지친 일상을 채우는 프라이빗 힐링</h2>
-        <p>서울 전 지역 전문 테라피스트 빠른 방문 케어 서비스</p>
+        <h2>꿈결 같은 일상의 쉼표, 마사지몽</h2>
+        <p>서울 · 경기 · 인천 수도권 전 지역 전문 테라피스트 1:1 맞춤 힐링 케어</p>
     </div>
 
     <!-- 공지사항 -->
     <div class="notice-banner">
-        <strong>[이용 안내]</strong> 서울 전 지역 30분 내 원활한 방문 지원. 100% 예약제로 운영되며 사전 전화 상담을 통해 정확한 안내를 받으실 수 있습니다.
+        <strong>[마사지몽 이용 안내]</strong> 100% 예약제로 운영되며 사전 상담을 통해 신속하고 안전한 맞춤 힐링 테라피 서비스를 제공합니다.
     </div>
 
     <div class="container">
         
         <!-- 추천 업체 리스트 -->
-        <h2 class="section-title">검증된 테라피 매장 TOP 5</h2>
+        <h2 class="section-title">마사지몽 검증 추천 제휴 매장 TOP 5</h2>
 
         <!-- 업체 1 -->
         <div class="vendor-card">
-            <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=800&q=80" alt="기쁨조홈타이 테라피 케어" class="vendor-img">
+            <img src="images/vendor1.jpg" alt="기쁨조 테라피 케어" class="vendor-img">
             <div class="vendor-body">
                 <div class="vendor-header">
                     <div>
                         <span class="vendor-badge">추천 01</span>
-                        <span class="vendor-title">기쁨조홈타이</span>
+                        <span class="vendor-title">기쁨조 테라피</span>
                     </div>
-                    <div class="vendor-tagline">★ 강남 / 서초 / 송파 중심 20분 도착 지원</div>
+                    <div class="vendor-tagline">★ 강남 / 서초 / 송파 중심 신속 배정 케어</div>
                 </div>
                 <div class="vendor-info">
                     <div class="info-row">
@@ -255,7 +265,7 @@
                         <div class="info-content">전문 자격 테라피스트 구성, 천연 에센셜 오일 사용, 맞춤 컨디셔닝</div>
                     </div>
                     <div class="info-row">
-                        <div class="info-label">주요 방문지</div>
+                        <div class="info-label">서비스 지역</div>
                         <div class="info-content">강남구(역삼, 논현, 청담, 삼성), 서초구(반포, 방배), 송파구(잠실) 일대</div>
                     </div>
                 </div>
@@ -265,14 +275,14 @@
 
         <!-- 업체 2 -->
         <div class="vendor-card">
-            <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=800&q=80" alt="한국미인홈케어 관리" class="vendor-img">
+            <img src="images/vendor2.jpg" alt="한국미인 홈케어 관리" class="vendor-img">
             <div class="vendor-body">
                 <div class="vendor-header">
                     <div>
                         <span class="vendor-badge">추천 02</span>
-                        <span class="vendor-title">한국미인홈케어</span>
+                        <span class="vendor-title">한국미인 홈케어</span>
                     </div>
-                    <div class="vendor-tagline">★ 서울 도심 및 강북 권역 신속 방문 케어</div>
+                    <div class="vendor-tagline">★ 서울 도심 및 강북 권역 프리미엄 바디 케어</div>
                 </div>
                 <div class="vendor-info">
                     <div class="info-row">
@@ -284,7 +294,7 @@
                         <div class="info-content">24시간 운영, 직장인 피로회복 전문, 정찰제 시스템</div>
                     </div>
                     <div class="info-row">
-                        <div class="info-label">주요 방문지</div>
+                        <div class="info-label">서비스 지역</div>
                         <div class="info-content">종로구(혜화, 명동, 종로), 중구(회현, 신당), 용산구(이태원, 한남)</div>
                     </div>
                 </div>
@@ -294,14 +304,14 @@
 
         <!-- 업체 3 -->
         <div class="vendor-card">
-            <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=800&q=80" alt="미인클럽홈타이 아로마 케어" class="vendor-img">
+            <img src="images/vendor3.jpg" alt="미인클럽 아로마 케어" class="vendor-img">
             <div class="vendor-body">
                 <div class="vendor-header">
                     <div>
                         <span class="vendor-badge">추천 03</span>
-                        <span class="vendor-title">미인클럽홈타이</span>
+                        <span class="vendor-title">미인클럽 스파 & 테라피</span>
                     </div>
-                    <div class="vendor-tagline">★ 감성적이고 부드러운 스페셜 림프 케어</div>
+                    <div class="vendor-tagline">★ 감성적이고 부드러운 스페셜 림프 순환 케어</div>
                 </div>
                 <div class="vendor-info">
                     <div class="info-row">
@@ -313,7 +323,7 @@
                         <div class="info-content">위생 소독 관리 철저, 일대일 맞춤 힐링 프로그램 지원</div>
                     </div>
                     <div class="info-row">
-                        <div class="info-label">주요 방문지</div>
+                        <div class="info-label">서비스 지역</div>
                         <div class="info-content">마포구(홍대, 신촌, 합정, 연남), 서대문구, 은평구 일대</div>
                     </div>
                 </div>
@@ -323,14 +333,14 @@
 
         <!-- 업체 4 -->
         <div class="vendor-card">
-            <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=800&q=80" alt="퀸즈 홈테라피 스페셜 케어" class="vendor-img">
+            <img src="images/vendor4.jpg" alt="퀸즈 홈테라피 스페셜 케어" class="vendor-img">
             <div class="vendor-body">
                 <div class="vendor-header">
                     <div>
                         <span class="vendor-badge">추천 04</span>
                         <span class="vendor-title">퀸즈 홈테라피</span>
                     </div>
-                    <div class="vendor-tagline">★ 서울 서남부권(영등포/구로/관악) 전문 커버</div>
+                    <div class="vendor-tagline">★ 서울 서남부권(영등포/구로/관악) 집중 힐링 케어</div>
                 </div>
                 <div class="vendor-info">
                     <div class="info-row">
@@ -339,10 +349,10 @@
                     </div>
                     <div class="info-row">
                         <div class="info-label">매장 특징</div>
-                        <div class="info-content">프리미엄 힐링 솔루션 제공, 신속한 출동 시스템 구축</div>
+                        <div class="info-content">프리미엄 힐링 솔루션 제공, 신속한 1:1 매칭 시스템</div>
                     </div>
                     <div class="info-row">
-                        <div class="info-label">주요 방문지</div>
+                        <div class="info-label">서비스 지역</div>
                         <div class="info-content">영등포구(여의도, 당산, 문래), 동작구, 관악구(신림) 전 지역</div>
                     </div>
                 </div>
@@ -352,14 +362,14 @@
 
         <!-- 업체 5 -->
         <div class="vendor-card">
-            <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=800&q=80" alt="동탄미씨홈타이 힐링 관리" class="vendor-img">
+            <img src="images/vendor5.jpg" alt="동탄미씨 홈케어 힐링 관리" class="vendor-img">
             <div class="vendor-body">
                 <div class="vendor-header">
                     <div>
                         <span class="vendor-badge">추천 05</span>
-                        <span class="vendor-title">동탄미씨홈타이</span>
+                        <span class="vendor-title">동탄미씨 홈케어</span>
                     </div>
-                    <div class="vendor-tagline">★ 서울 강서구 및 경기 권역 신속 대기 서비스</div>
+                    <div class="vendor-tagline">★ 서울 서부권 및 경기 권역 전문 테라피</div>
                 </div>
                 <div class="vendor-info">
                     <div class="info-row">
@@ -368,10 +378,10 @@
                     </div>
                     <div class="info-row">
                         <div class="info-label">매장 특징</div>
-                        <div class="info-content">합리적인 가격 구성, 친절한 친환경 바디 케어 상담</div>
+                        <div class="info-content">합리적인 가격 구성, 친절한 바디 케어 상담</div>
                     </div>
                     <div class="info-row">
-                        <div class="info-label">주요 방문지</div>
+                        <div class="info-label">서비스 지역</div>
                         <div class="info-content">강서구(마곡, 화곡), 양천구(목동, 신정), 구로구(신도림, 구로), 금천구(가산, 독산)</div>
                     </div>
                 </div>
@@ -380,10 +390,10 @@
         </div>
 
         <!-- 이용 후기 영역 -->
-        <h2 class="section-title">생생한 고객 이용 후기</h2>
+        <h2 class="section-title">마사지몽 실제 이용 고객 후기</h2>
         <div class="review-grid">
             <div class="review-card">
-                <p>"강남 역삼동 근처 퇴근 후에 신청했는데 안내받은 시간에 맞춰 도착해주셔서 편하게 피로 풀었습니다."</p>
+                <p>"강남 역삼동 근처 퇴근 후에 마사지몽을 통해 예약했는데 편안하게 피로 잘 풀었습니다."</p>
                 <div class="author">- 강남구 역삼동 이용 고객님</div>
             </div>
             <div class="review-card">
@@ -391,75 +401,98 @@
                 <div class="author">- 마포구 홍대 이용 고객님</div>
             </div>
             <div class="review-card">
-                <p>"늦은 야근 마치고 새벽 시간대에 문의했는데 30분 만에 오셔서 깔끔하게 집중 케어 받았습니다."</p>
+                <p>"늦은 야근 마치고 새벽 시간대에 문의했는데 깔끔하게 집중 힐링 케어 받았습니다."</p>
                 <div class="author">- 영등포 여의도 이용 고객님</div>
             </div>
         </div>
 
         <!-- 실제 문의 대화 내역 (Chat Panel) -->
-        <h2 class="section-title">실제 상담 문의 내역 예시</h2>
+        <h2 class="section-title">마사지몽 1:1 실시간 상담 안내</h2>
         <div class="chat-panel">
-            <h3>💬 고객 실시간 질문 & 상담 답변</h3>
+            <h3>💬 고객 실시간 질문 & 마사지몽 상담 답변</h3>
             <div class="chat-msg">
                 <div class="chat-left">Q. 오늘 저녁 9시쯤 강남구 역삼동 위치인데 당일 예약 가능할까요?</div>
-                <div class="chat-right">네 고객님! 희망하시는 시간과 정확한 장소 말씀해주시면 담당 테라피스트 배정 후 안내드립니다.</div>
+                <div class="chat-right">네 고객님! 원하시는 시간과 코스를 말씀해주시면 전담 테라피스트 배정 후 신속히 안내해 드립니다.</div>
             </div>
             <div class="chat-msg">
                 <div class="chat-left">Q. 타이 코스랑 아로마 코스 차이가 궁금해요.</div>
-                <div class="chat-right">타이 코스는 스트레칭 중심의 시원한 케어이며, 아로마는 천연 오일을 이용한 부드러운 릴렉싱 케어입니다.</div>
+                <div class="chat-right">타이 코스는 스트레칭 중심의 시원한 건식 케어이며, 아로마는 천연 오일을 이용한 부드러운 릴렉싱 케어입니다.</div>
             </div>
             <div class="chat-msg">
-                <div class="chat-left">Q. 결제는 언제 진행하면 되나요?</div>
-                <div class="chat-right">저희 안내 매장들은 방문 확인 후 현장에서 진행되는 후불제 시스템이므로 안심하고 이용하실 수 있습니다.</div>
+                <div class="chat-left">Q. 결제는 어떻게 진행되나요?</div>
+                <div class="chat-right">마사지몽 안내 제휴처는 사전 선입금을 요구하지 않는 안전한 후불제 시스템으로 운영됩니다.</div>
             </div>
         </div>
 
-        <!-- 서울시 25개 구 및 세부 동 전체 안내 (폴더 경로로 연결) -->
+        <!-- 서울 / 경기 / 인천 전체 권역별 바로가기 -->
         <div class="area-box">
-            <h3>📍 서울특별시 25개 구·동별 방문 전용 페이지</h3>
+            <h3>📍 마사지몽 수도권 전 지역 안내 (서울 · 경기 · 인천)</h3>
+
+            <!-- 서울특별시 25개 구 -->
+            <div class="region-sub-title seoul">서울특별시 (25개 자치구)</div>
             <div class="area-grid">
-                <!-- 동작구 -->
-                <div class="area-item">
-                    <a href="dongjak/index.html" class="gu-link">📍 동작구</a>
-                    <div class="dong-list">
-                        <a href="dongjak/noryangjin.html">노량진</a>, <a href="dongjak/sangdo.html">상도동</a>, <a href="dongjak/sadang.html">사당동</a>, <a href="dongjak/heukseok.html">흑석동</a>, <a href="dongjak/sindaebang.html">신대방</a>
-                    </div>
-                </div>
-                <!-- 관악구 -->
-                <div class="area-item">
-                    <a href="gwanak/index.html" class="gu-link">📍 관악구</a>
-                    <div class="dong-list">
-                        <a href="gwanak/bongcheon.html">봉천동</a>, <a href="gwanak/sillim.html">신림동</a>, <a href="gwanak/namhyeon.html">남현동</a>, <a href="gwanak/boramae.html">보라매</a>, <a href="gwanak/cheongryong.html">청룡동</a>
-                    </div>
-                </div>
-                <!-- 서초구 -->
-                <div class="area-item">
-                    <a href="seocho/index.html" class="gu-link">📍 서초구</a>
-                    <div class="dong-list">
-                        <a href="seocho/seocho.html">서초동</a>, <a href="seocho/banpo.html">반포동</a>, <a href="seocho/bangbae.html">방배동</a>, <a href="seocho/yangjae.html">양재동</a>, <a href="seocho/jamwon.html">잠원동</a>
-                    </div>
-                </div>
-                <!-- 강남구 -->
-                <div class="area-item">
-                    <a href="gangnam/index.html" class="gu-link">📍 강남구</a>
-                    <div class="dong-list">
-                        <a href="gangnam/yeoksam.html">역삼동</a>, <a href="gangnam/nonhyeon.html">논현동</a>, <a href="gangnam/apgujeong.html">압구정</a>, <a href="gangnam/cheongdam.html">청담동</a>, <a href="gangnam/samseong.html">삼성동</a>
-                    </div>
-                </div>
-                <!-- 송파구 -->
-                <div class="area-item">
-                    <a href="songpa/index.html" class="gu-link">📍 송파구</a>
-                    <div class="dong-list">
-                        <a href="songpa/jamsil.html">잠실동</a>, <a href="songpa/garak.html">가락동</a>, <a href="songpa/munjeong.html">문정동</a>, <a href="songpa/bangi.html">방이동</a>, <a href="songpa/ogeum.html">오금동</a>
-                    </div>
-                </div>
-                <!-- 강동구 -->
-                <div class="area-item">
-                    <a href="gangdong/index.html" class="gu-link">📍 강동구</a>
-                    <div class="dong-list">
-                        <a href="gangdong/cheonho.html">천호동</a>, <a href="gangdong/gil.html">길동</a>, <a href="gangdong/amsa.html">암사동</a>, <a href="gangdong/myeongil.html">명일동</a>, <a href="gangdong/seongnae.html">성내동</a>
-                    </div>
-                </div>
+                <div class="area-item"><a href="gangnam/index.html" class="gu-link">강남구</a></div>
+                <div class="area-item"><a href="seocho/index.html" class="gu-link">서초구</a></div>
+                <div class="area-item"><a href="songpa/index.html" class="gu-link">송파구</a></div>
+                <div class="area-item"><a href="gangdong/index.html" class="gu-link">강동구</a></div>
+                <div class="area-item"><a href="mapo/index.html" class="gu-link">마포구</a></div>
+                <div class="area-item"><a href="yongsan/index.html" class="gu-link">용산구</a></div>
+                <div class="area-item"><a href="seodaemun/index.html" class="gu-link">서대문구</a></div>
+                <div class="area-item"><a href="eunpyeong/index.html" class="gu-link">은평구</a></div>
+                <div class="area-item"><a href="jongno/index.html" class="gu-link">종로구</a></div>
+                <div class="area-item"><a href="junggu/index.html" class="gu-link">중구</a></div>
+                <div class="area-item"><a href="jungnang/index.html" class="gu-link">중랑구</a></div>
+                <div class="area-item"><a href="seongbuk/index.html" class="gu-link">성북구</a></div>
+                <div class="area-item"><a href="gangbuk/index.html" class="gu-link">강북구</a></div>
+                <div class="area-item"><a href="dobong/index.html" class="gu-link">도봉구</a></div>
+                <div class="area-item"><a href="nowon/index.html" class="gu-link">노원구</a></div>
+                <div class="area-item"><a href="seongdong/index.html" class="gu-link">성동구</a></div>
+                <div class="area-item"><a href="gwangjin/index.html" class="gu-link">광진구</a></div>
+                <div class="area-item"><a href="dongdaemun/index.html" class="gu-link">동대문구</a></div>
+                <div class="area-item"><a href="yeongdeungpo/index.html" class="gu-link">영등포구</a></div>
+                <div class="area-item"><a href="guro/index.html" class="gu-link">구로구</a></div>
+                <div class="area-item"><a href="geumcheon/index.html" class="gu-link">금천구</a></div>
+                <div class="area-item"><a href="yangcheon/index.html" class="gu-link">양천구</a></div>
+                <div class="area-item"><a href="gangse/index.html" class="gu-link">강서구</a></div>
+                <div class="area-item"><a href="dongjak/index.html" class="gu-link">동작구</a></div>
+                <div class="area-item"><a href="gwanak/index.html" class="gu-link">관악구</a></div>
+            </div>
+
+            <!-- 경기도 주요 시/군 -->
+            <div class="region-sub-title gyeonggi">경기도 (주요 시·군)</div>
+            <div class="area-grid">
+                <div class="area-item"><a href="suwon/index.html" class="gu-link">수원시</a></div>
+                <div class="area-item"><a href="seongnam/index.html" class="gu-link">성남시</a></div>
+                <div class="area-item"><a href="goyang/index.html" class="gu-link">고양시</a></div>
+                <div class="area-item"><a href="yongin/index.html" class="gu-link">용인시</a></div>
+                <div class="area-item"><a href="bucheon/index.html" class="gu-link">부천시</a></div>
+                <div class="area-item"><a href="ansan/index.html" class="gu-link">안산시</a></div>
+                <div class="area-item"><a href="anyang/index.html" class="gu-link">안양시</a></div>
+                <div class="area-item"><a href="hwaseong/index.html" class="gu-link">화성시</a></div>
+                <div class="area-item"><a href="pyeongtaek/index.html" class="gu-link">평택시</a></div>
+                <div class="area-item"><a href="siheung/index.html" class="gu-link">시흥시</a></div>
+                <div class="area-item"><a href="gimpo/index.html" class="gu-link">김포시</a></div>
+                <div class="area-item"><a href="paju/index.html" class="gu-link">파주시</a></div>
+                <div class="area-item"><a href="uijeongbu/index.html" class="gu-link">의정부시</a></div>
+                <div class="area-item"><a href="namyangju/index.html" class="gu-link">남양주시</a></div>
+                <div class="area-item"><a href="hanam/index.html" class="gu-link">하남시</a></div>
+                <div class="area-item"><a href="gwangmyeong/index.html" class="gu-link">광명시</a></div>
+                <div class="area-item"><a href="gunpo/index.html" class="gu-link">군포시</a></div>
+                <div class="area-item"><a href="guri/index.html" class="gu-link">구리시</a></div>
+                <div class="area-item"><a href="osan/index.html" class="gu-link">오산시</a></div>
+                <div class="area-item"><a href="gwangju_gyeonggi/index.html" class="gu-link">경기광주</a></div>
+            </div>
+
+            <!-- 인천광역시 -->
+            <div class="region-sub-title incheon">인천광역시</div>
+            <div class="area-grid">
+                <div class="area-item"><a href="incheon_bupyeong/index.html" class="gu-link">부평구</a></div>
+                <div class="area-item"><a href="incheon_namdong/index.html" class="gu-link">남동구</a></div>
+                <div class="area-item"><a href="incheon_yeonsu/index.html" class="gu-link">연수구</a></div>
+                <div class="area-item"><a href="incheon_seogu/index.html" class="gu-link">서구</a></div>
+                <div class="area-item"><a href="incheon_michuhol/index.html" class="gu-link">미추홀구</a></div>
+                <div class="area-item"><a href="incheon_gyeyang/index.html" class="gu-link">계양구</a></div>
+                <div class="area-item"><a href="incheon_junggu/index.html" class="gu-link">중구</a></div>
             </div>
         </div>
 
@@ -467,7 +500,7 @@
 
     <!-- 푸터 -->
     <footer>
-        <p>© 서울 프리미엄 방문 테라피 안내. All rights reserved.</p>
+        <p>© 마사지몽 (MassageMong). All rights reserved.</p>
     </footer>
 
 </body>
