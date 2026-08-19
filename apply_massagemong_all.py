@@ -1,72 +1,60 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>은평구 Bulgwang 프라이빗 24시 출장 마사지 케어 추천 리스트 | 마사지몽</title>
-    <meta name="description" content="은평구 Bulgwang 전 구역 24시간 출장 마사지 빠른 배정. 아로마 오일 케어부터 건식 타이까지 취향별 코스 완비.">
-    <meta name="keywords" content="은평구 Bulgwang 출장 마사지 추천, 은평구 Bulgwang 방문 마사지, 은평구 Bulgwang 타이 마사지, 은평구 Bulgwang 힐링 테라피">
-    <meta name="robots" content="index, follow">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Noto Sans KR', -apple-system, sans-serif; }
-        body { background-color: #0f1117; color: #e1e3e8; line-height: 1.6; padding-bottom: 40px; }
-        a { text-decoration: none; color: inherit; }
-        header { background: #161821; padding: 18px 20px; text-align: center; border-bottom: 2px solid #e74c3c; position: sticky; top: 0; z-index: 100; }
-        header h1 { font-size: 1.35rem; color: #ffffff; font-weight: 700; }
-        header h1 span { color: #e74c3c; }
-        .hero-banner { background: linear-gradient(rgba(15, 17, 23, 0.75), rgba(15, 17, 23, 0.88)), url('https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1200&q=80') center/cover; padding: 50px 20px; text-align: center; border-bottom: 1px solid #2a2d37; }
-        .hero-banner h2 { font-size: 1.6rem; color: #fff; margin-bottom: 10px; }
-        .hero-banner p { font-size: 0.95rem; color: #f1c40f; }
-        .container { max-width: 900px; margin: 0 auto; padding: 20px 15px; }
-        .nav-bar { display: flex; gap: 10px; margin-bottom: 20px; }
-        .home-btn { background: #2a2d37; color: #fff; padding: 8px 15px; border-radius: 5px; font-size: 0.85rem; }
-        .section-title { font-size: 1.25rem; color: #ffffff; margin: 25px 0 18px 0; border-left: 4px solid #e74c3c; padding-left: 10px; font-weight: 700; }
-        .vendor-card { background: #161821; border: 1px solid #2a2d37; border-radius: 12px; overflow: hidden; margin-bottom: 25px; }
-        .vendor-card:hover { border-color: #e74c3c; }
-        .vendor-img { width: 100%; height: 220px; object-fit: cover; }
-        .vendor-body { padding: 20px; }
-        .vendor-header { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #2a2d37; padding-bottom: 12px; margin-bottom: 15px; flex-wrap: wrap; gap: 8px; }
-        .vendor-badge { background: #e74c3c; color: #fff; font-size: 0.8rem; font-weight: bold; padding: 4px 10px; border-radius: 4px; }
-        .vendor-title { font-size: 1.2rem; color: #ffffff; font-weight: bold; }
-        .vendor-tagline { color: #2ecc71; font-size: 0.88rem; font-weight: 600; width: 100%; margin-top: 4px; }
-        .vendor-info { margin-bottom: 18px; }
-        .info-row { display: flex; margin-bottom: 8px; font-size: 0.92rem; }
-        .info-label { width: 95px; color: #f1c40f; font-weight: bold; flex-shrink: 0; }
-        .info-content { color: #bbbfca; }
-        .vendor-call-btn { display: block; text-align: center; background: linear-gradient(135deg, #e74c3c, #c0392b); color: #ffffff; font-weight: bold; padding: 13px; border-radius: 8px; font-size: 1rem; }
-        footer { text-align: center; padding: 25px 20px; font-size: 0.8rem; color: #7f8c8d; border-top: 1px solid #2a2d37; margin-top: 20px; }
-    </style>
-</head>
-<body>
+﻿import os
+import re
+import random
 
-    <header>
-        <h1>은평구 Bulgwang 출장 마사지 <span>프리미엄 24시 방문 케어</span></h1>
-    </header>
+# ==============================================================================
+# 1. 영문 폴더/파일명 -> 한글 지역명 매핑
+# ==============================================================================
+NAME_MAP = {
+    "seoul": "서울", "gangnam": "강남구", "seocho": "서초구", "songpa": "송파구", "gangdong": "강동구",
+    "mapo": "마포구", "yongsan": "용산구", "seodaemun": "서대문구", "eunpyeong": "은평구",
+    "jongno": "종로구", "junggu": "중구", "jungnang": "중랑구", "seongbuk": "성북구",
+    "gangbuk": "강북구", "dobong": "도봉구", "nowon": "노원구", "seongdong": "성동구",
+    "gwangjin": "광진구", "dongdaemun": "동대문구", "yeongdeungpo": "영등포구",
+    "guro": "구로구", "geumcheon": "금천구", "yangcheon": "양천구", "gangse": "강서구",
+    "gangseo": "강서구", "dongjak": "동작구", "gwanak": "관악구",
+    "incheon_bupyeong": "인천 부평구", "incheon_namdong": "인천 남동구", "incheon_yeonsu": "인천 연수구",
+    "incheon_michuhol": "인천 미추홀구", "incheon_seogu": "인천 서구", "incheon_gyeyang": "인천 계양구",
+    "incheon_junggu": "인천 중구", "incheon_donggu": "인천 동구",
+    "suwon": "수원시", "suwon_paldal": "수원 팔달구", "suwon_yeongtong": "수원 영통구", "suwon_jangan": "수원 장안구", "suwon_gwonseon": "수원 권선구",
+    "seongnam": "성남시", "seongnam_bundang": "성남 분당구", "seongnam_sujeong": "성남 수정구", "seongnam_jungwon": "성남 중원구",
+    "goyang": "고양시", "goyang_ilsandong": "고양 일산동구", "goyang_ilsanseo": "고양 일산서구", "goyang_deogyang": "고양 덕양구",
+    "yongin": "용인시", "yongin_suji": "용인 수지구", "yongin_giheung": "용인 기흥구", "yongin_cheoin": "용인 처인구",
+    "anyang": "안양시", "anyang_dongan": "안양 동안구", "anyang_manan": "안양 만안구",
+    "ansan": "안산시", "ansan_danwon": "안산 단원구", "ansan_sangnok": "안산 상록구",
+    "bucheon": "부천시", "hwaseong": "화성시", "pyeongtaek": "평택시", "siheung": "시흥시",
+    "gimpo": "김포시", "paju": "파주시", "namyangju": "남양주시", "uijeongbu": "의정부시",
+    "hanam": "하남시", "gwangmyeong": "광명시", "gunpo": "군포시", "guri": "구리시",
+    "osan": "오산시", "gwangju_gyeonggi": "경기 광주시", "icheon": "이천시", "yangju": "양주시",
+    "uiwang": "의왕시", "anseong": "안성시"
+}
 
-    <div class="hero-banner">
-        <h2>불광동 지역 맞춤 프라이빗 힐링 서비스</h2>
-        <p>불광역, 독바위역, 연서시장 인접 20분 내 신속 방문 케어</p>
-    </div>
+def get_loc_name(rel_path):
+    parts = rel_path.replace("\\", "/").split("/")
+    if len(parts) == 2 and parts[1] == "index.html":
+        folder = parts[0]
+        return NAME_MAP.get(folder, folder.capitalize())
+    else:
+        folder = parts[0]
+        file_name = parts[-1].replace(".html", "")
+        folder_kr = NAME_MAP.get(folder, folder.capitalize())
+        file_kr = NAME_MAP.get(file_name, file_name.capitalize())
+        return f"{folder_kr} {file_kr}" if folder_kr != file_kr else folder_kr
 
-    <div class="container">
-        <div class="nav-bar">
-            <a href="../index.html" class="home-btn">🏠 서울 전체 메인</a>
-            <a href="index.html" class="home-btn">📍 은평구 메인</a>
-        </div>
-
-        <h2 class="section-title">은평구 Bulgwang 추천 테라피 매장 TOP 5</h2>
-
-        <!-- 1 -->
+# ==============================================================================
+# 2. 마사지몽 5개 실제 제휴 업체 카드 템플릿
+# ==============================================================================
+FIVE_VENDORS_HTML = """
         <!-- 1번 업체: 기쁨조 테라피 -->
         <div class="vendor-card">
-            <img src="/images/vendor1.jpg" alt="은평구 Bulgwang 기쁨조 테라피" class="vendor-img">
+            <img src="/images/vendor1.jpg" alt="{loc} 기쁨조 테라피" class="vendor-img">
             <div class="vendor-body">
                 <div class="vendor-header">
                     <div>
                         <span class="vendor-badge">추천 01</span>
                         <span class="vendor-title">기쁨조 테라피</span>
                     </div>
-                    <div class="vendor-tagline">★ 은평구 Bulgwang 전 지역 30분 내 신속 방문 보장</div>
+                    <div class="vendor-tagline">★ {loc} 전 지역 30분 내 신속 방문 보장</div>
                 </div>
                 <div class="vendor-info">
                     <div class="info-row">
@@ -84,7 +72,7 @@
 
         <!-- 2번 업체: 한국미인 홈케어 -->
         <div class="vendor-card">
-            <img src="/images/vendor2.jpg" alt="은평구 Bulgwang 한국미인 홈케어" class="vendor-img">
+            <img src="/images/vendor2.jpg" alt="{loc} 한국미인 홈케어" class="vendor-img">
             <div class="vendor-body">
                 <div class="vendor-header">
                     <div>
@@ -109,7 +97,7 @@
 
         <!-- 3번 업체: 미인클럽 스파 & 테라피 -->
         <div class="vendor-card">
-            <img src="/images/vendor3.jpg" alt="은평구 Bulgwang 미인클럽 스파 & 테라피" class="vendor-img">
+            <img src="/images/vendor3.jpg" alt="{loc} 미인클럽 스파 & 테라피" class="vendor-img">
             <div class="vendor-body">
                 <div class="vendor-header">
                     <div>
@@ -134,7 +122,7 @@
 
         <!-- 4번 업체: 퀸즈홈테라피 -->
         <div class="vendor-card">
-            <img src="/images/vendor4.jpg" alt="은평구 Bulgwang 퀸즈홈테라피" class="vendor-img">
+            <img src="/images/vendor4.jpg" alt="{loc} 퀸즈홈테라피" class="vendor-img">
             <div class="vendor-body">
                 <div class="vendor-header">
                     <div>
@@ -159,7 +147,7 @@
 
         <!-- 5번 업체: 동탄미씨홈케어 -->
         <div class="vendor-card">
-            <img src="/images/vendor5.jpg" alt="은평구 Bulgwang 동탄미씨홈케어" class="vendor-img">
+            <img src="/images/vendor5.jpg" alt="{loc} 동탄미씨홈케어" class="vendor-img">
             <div class="vendor-body">
                 <div class="vendor-header">
                     <div>
@@ -181,12 +169,44 @@
                 <a href="tel:0507-1280-3302" class="vendor-call-btn">📞 전화 문의 : 0507-1280-3302</a>
             </div>
         </div>
+"""
 
-    </div>
+# ==============================================================================
+# 3. 마사지몽 브랜드 치환 및 5개 업체 일괄 적용
+# ==============================================================================
+updated_files = 0
 
-    <footer>
-        <p>© 불광동 프리미엄 바디 케어 안내. All rights reserved.</p>
-    </footer>
+for root, dirs, files in os.walk("."):
+    for file in files:
+        if not file.endswith(".html"):
+            continue
+        
+        file_path = os.path.join(root, file)
+        rel_path = os.path.relpath(file_path, ".").replace("\\", "/")
+        
+        with open(file_path, "r", encoding="utf-8") as f:
+            content = f.read()
 
-</body>
-</html>
+        # 스파루나 -> 마사지몽 브랜드명 복구
+        content = content.replace("스파루나", "마사지몽")
+        content = content.replace("SpaLuna", "MassageMong")
+        content = content.replace("spaluna", "massagemong")
+        
+        # 하위 지역 페이지 업체 카드 5개 일괄 적용
+        if rel_path != "index.html" and '<div class="vendor-card">' in content:
+            loc_name = get_loc_name(rel_path)
+            content = re.sub(r'<h2 class="section-title">.*?</h2>', f'<h2 class="section-title">{loc_name} 추천 테라피 매장 TOP 5</h2>', content, count=1)
+            
+            vendors_replacement = FIVE_VENDORS_HTML.format(loc=loc_name)
+            pattern = re.compile(r'<div class="vendor-card">.*?</div>\s*</div>(?=\s*(?:<h2|<div class="gu-grid"|</div>\s*<footer>|<footer>))', re.DOTALL)
+            
+            if pattern.search(content):
+                content = pattern.sub(vendors_replacement.strip(), content)
+            else:
+                content = re.sub(r'(<div class="vendor-card">.*</div>\s*</a>\s*</div>)', vendors_replacement.strip(), content, flags=re.DOTALL)
+            
+        with open(file_path, "w", encoding="utf-8") as f:
+            f.write(content)
+        updated_files += 1
+
+print(f"🎉 마사지몽: 총 {updated_files}개 페이지에 마사지몽 브랜드 복구 및 5개 업체가 완벽하게 적용되었습니다.")
