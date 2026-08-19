@@ -1,0 +1,207 @@
+@'
+import os
+import re
+
+# 1. seoul 폴더 생성
+os.makedirs("seoul", exist_ok=True)
+
+# 2. seoul/index.html 내용 작성 (마사지몽 브랜드 & 5개 업체 & 25개 구 링크)
+seoul_html_content = """<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seoul 출장 마사지 No.1 힐링 솔루션 | 마사지몽</title>
+    <meta name="description" content="Seoul 출장 마사지 검증 TOP 5 매장 소개. 합리적인 정찰제 가격과 최고의 테라피 퀄리티를 만나보세요.">
+    <meta name="keywords" content="Seoul 24시 출장 마사지 추천, Seoul 홈케어 아로마, Seoul 1인 테라피, Seoul 출장">
+    <meta name="robots" content="index, follow">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="마사지몽">
+    <meta property="og:title" content="Seoul 출장 마사지 & 24시 프리미엄 홈케어 | 마사지몽">
+    <meta property="og:description" content="서울 전지역 신속 배정! 1:1 맞춤형 프리미엄 방문 바디 테라피">
+    <meta property="og:image" content="/images/main-banner.jpg">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Noto Sans KR', -apple-system, sans-serif; }
+        body { background-color: #0f1117; color: #e1e3e8; line-height: 1.6; padding-bottom: 40px; }
+        a { text-decoration: none; color: inherit; }
+        header { background: #161821; padding: 18px 20px; text-align: center; border-bottom: 2px solid #e74c3c; position: sticky; top: 0; z-index: 100; }
+        header h1 { font-size: 1.35rem; color: #ffffff; font-weight: 700; }
+        header h1 span { color: #e74c3c; }
+        .hero-banner { background: linear-gradient(rgba(15, 17, 23, 0.75), rgba(15, 17, 23, 0.88)), url('/images/main-banner.jpg') center/cover; padding: 50px 20px; text-align: center; border-bottom: 1px solid #2a2d37; }
+        .hero-banner h2 { font-size: 1.6rem; color: #fff; margin-bottom: 10px; }
+        .hero-banner p { font-size: 0.95rem; color: #f1c40f; }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px 15px; }
+        .nav-bar { display: flex; gap: 10px; margin-bottom: 20px; }
+        .home-btn { background: #2a2d37; color: #fff; padding: 8px 15px; border-radius: 5px; font-size: 0.85rem; }
+        .section-title { font-size: 1.25rem; color: #ffffff; margin: 25px 0 18px 0; border-left: 4px solid #e74c3c; padding-left: 10px; font-weight: 700; }
+        
+        .vendor-card { background: #161821; border: 1px solid #2a2d37; border-radius: 12px; overflow: hidden; margin-bottom: 25px; }
+        .vendor-img { width: 100%; height: 220px; object-fit: cover; }
+        .vendor-body { padding: 20px; }
+        .vendor-header { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #2a2d37; padding-bottom: 12px; margin-bottom: 15px; flex-wrap: wrap; gap: 8px; }
+        .vendor-badge { background: #e74c3c; color: #fff; font-size: 0.8rem; font-weight: bold; padding: 4px 10px; border-radius: 4px; }
+        .vendor-badge.gold { background: #f39c12; }
+        .vendor-badge.blue { background: #3498db; }
+        .vendor-badge.purple { background: #9b59b6; }
+        .vendor-badge.green { background: #27ae60; }
+        .vendor-title { font-size: 1.2rem; color: #ffffff; font-weight: bold; }
+        .vendor-tagline { color: #2ecc71; font-size: 0.88rem; font-weight: 600; width: 100%; margin-top: 4px; }
+        .vendor-info { margin-bottom: 18px; }
+        .info-row { display: flex; margin-bottom: 8px; font-size: 0.92rem; }
+        .info-label { width: 95px; color: #f1c40f; font-weight: bold; flex-shrink: 0; }
+        .info-content { color: #bbbfca; }
+        .vendor-call-btn { display: block; text-align: center; background: linear-gradient(135deg, #e74c3c, #c0392b); color: #ffffff; font-weight: bold; padding: 13px; border-radius: 8px; font-size: 1rem; }
+        
+        .gu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 8px; margin-top: 15px; }
+        .gu-item { background: #1a1c23; border: 1px solid #2a2d37; padding: 10px; text-align: center; border-radius: 6px; font-size: 0.85rem; }
+        .gu-item:hover { border-color: #f1c40f; color: #f1c40f; }
+
+        footer { text-align: center; padding: 25px 20px; font-size: 0.8rem; color: #7f8c8d; border-top: 1px solid #2a2d37; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Seoul 출장 마사지 <span>프리미엄 24시 방문 케어</span></h1>
+    </header>
+
+    <div class="hero-banner">
+        <h2>서울 특별시 전 지역 1:1 맞춤형 힐링 테라피</h2>
+        <p>강남 · 강북 · 서남 · 동북권 30분 내 신속 방문 서비스</p>
+    </div>
+
+    <div class="container">
+        <div class="nav-bar">
+            <a href="../index.html" class="home-btn">🏠 전체 메인 홈</a>
+        </div>
+
+        <!-- 수도권 전 지역 (서울·인천·경기) 통합 네비게이션 -->
+        <div class="area-box" style="margin-top:35px; background:#161821; border:1px solid #2a2d37; border-radius:12px; padding:20px;">
+            <h3 style="font-size:1.2rem; color:#f1c40f; margin-bottom:15px; border-bottom:1px solid #2a2d37; padding-bottom:10px;">📍 수도권 전 지역 세부 바로가기 (서울 · 인천 · 경기)</h3>
+
+            <!-- 1. 서울특별시 -->
+            <div style="font-weight:bold; color:#e74c3c; margin:15px 0 8px 0; font-size:1.05rem;">[ 서울특별시 전지역 & 25개 자치구 ]</div>
+            <div class="gu-grid">
+                <a href="/seoul/index.html" class="gu-item" style="border-color:#e74c3c; color:#f1c40f; font-weight:bold;">★ 서울 전지역</a>
+                <a href="/gangnam/index.html" class="gu-item">강남구</a>
+                <a href="/seocho/index.html" class="gu-item">서초구</a>
+                <a href="/songpa/index.html" class="gu-item">송파구</a>
+                <a href="/gangdong/index.html" class="gu-item">강동구</a>
+                <a href="/mapo/index.html" class="gu-item">마포구</a>
+                <a href="/yongsan/index.html" class="gu-item">용산구</a>
+                <a href="/seodaemun/index.html" class="gu-item">서대문구</a>
+                <a href="/eunpyeong/index.html" class="gu-item">은평구</a>
+                <a href="/jongno/index.html" class="gu-item">종로구</a>
+                <a href="/junggu/index.html" class="gu-item">중구</a>
+                <a href="/jungnang/index.html" class="gu-item">중랑구</a>
+                <a href="/seongbuk/index.html" class="gu-item">성북구</a>
+                <a href="/gangbuk/index.html" class="gu-item">강북구</a>
+                <a href="/dobong/index.html" class="gu-item">도봉구</a>
+                <a href="/nowon/index.html" class="gu-item">노원구</a>
+                <a href="/seongdong/index.html" class="gu-item">성동구</a>
+                <a href="/gwangjin/index.html" class="gu-item">광진구</a>
+                <a href="/dongdaemun/index.html" class="gu-item">동대문구</a>
+                <a href="/yeongdeungpo/index.html" class="gu-item">영등포구</a>
+                <a href="/guro/index.html" class="gu-item">구로구</a>
+                <a href="/geumcheon/index.html" class="gu-item">금천구</a>
+                <a href="/yangcheon/index.html" class="gu-item">양천구</a>
+                <a href="/gangse/index.html" class="gu-item">강서구</a>
+                <a href="/dongjak/index.html" class="gu-item">동작구</a>
+                <a href="/gwanak/index.html" class="gu-item">관악구</a>
+            </div>
+
+            <!-- 2. 인천광역시 -->
+            <div style="font-weight:bold; color:#3498db; margin:20px 0 8px 0; font-size:1.05rem;">[ 인천광역시 8개 구/군 & 세부 동 ]</div>
+            <div class="gu-grid">
+                <a href="/incheon_bupyeong/index.html" class="gu-item">인천 부평구</a>
+                <a href="/incheon_namdong/index.html" class="gu-item">인천 남동구</a>
+                <a href="/incheon_yeonsu/index.html" class="gu-item">인천 연수구(송도)</a>
+                <a href="/incheon_michuhol/index.html" class="gu-item">인천 미추홀구</a>
+                <a href="/incheon_seogu/index.html" class="gu-item">인천 서구(청라/검단)</a>
+                <a href="/incheon_gyeyang/index.html" class="gu-item">인천 계양구</a>
+                <a href="/incheon_junggu/index.html" class="gu-item">인천 중구(영종도)</a>
+                <a href="/incheon_donggu/index.html" class="gu-item">인천 동구</a>
+            </div>
+
+            <!-- 3. 경기도 주요 시/구 -->
+            <div style="font-weight:bold; color:#2ecc71; margin:20px 0 8px 0; font-size:1.05rem;">[ 경기도 주요 시·구 & 세부 동 ]</div>
+            <div class="gu-grid">
+                <a href="/suwon/index.html" class="gu-item">수원시 전체</a>
+                <a href="/suwon_paldal/index.html" class="gu-item">수원 팔달구(인계동)</a>
+                <a href="/suwon_yeongtong/index.html" class="gu-item">수원 영통구(광교)</a>
+                <a href="/suwon_jangan/index.html" class="gu-item">수원 장안구</a>
+                <a href="/suwon_gwonseon/index.html" class="gu-item">수원 권선구</a>
+                
+                <a href="/seongnam/index.html" class="gu-item">성남시 전체</a>
+                <a href="/seongnam_bundang/index.html" class="gu-item">성남 분당구(판교)</a>
+                <a href="/seongnam_sujeong/index.html" class="gu-item">성남 수정구(위례)</a>
+                <a href="/seongnam_jungwon/index.html" class="gu-item">성남 중원구(모란)</a>
+                
+                <a href="/goyang/index.html" class="gu-item">고양시 전체</a>
+                <a href="/goyang_ilsandong/index.html" class="gu-item">고양 일산동구</a>
+                <a href="/goyang_ilsanseo/index.html" class="gu-item">고양 일산서구</a>
+                <a href="/goyang_deogyang/index.html" class="gu-item">고양 덕양구(삼송)</a>
+                
+                <a href="/yongin/index.html" class="gu-item">용인시 전체</a>
+                <a href="/yongin_suji/index.html" class="gu-item">용인 수지구(죽전)</a>
+                <a href="/yongin_giheung/index.html" class="gu-item">용인 기흥구(동백)</a>
+                <a href="/yongin_cheoin/index.html" class="gu-item">용인 처인구(역북)</a>
+                
+                <a href="/bucheon/index.html" class="gu-item">부천시(중동/상동)</a>
+                <a href="/hwaseong/index.html" class="gu-item">화성시(동탄1·2/병점)</a>
+                <a href="/pyeongtaek/index.html" class="gu-item">평택시(고덕/비전동)</a>
+                <a href="/siheung/index.html" class="gu-item">시흥시(배곧/정왕동)</a>
+                <a href="/gimpo/index.html" class="gu-item">김포시(구래/운양동)</a>
+                <a href="/paju/index.html" class="gu-item">파주시(운정/야당동)</a>
+                <a href="/namyangju/index.html" class="gu-item">남양주시(다산/별내)</a>
+                <a href="/uijeongbu/index.html" class="gu-item">의정부시(민락동)</a>
+                <a href="/hanam/index.html" class="gu-item">하남시(미사/감일)</a>
+                <a href="/gwangmyeong/index.html" class="gu-item">광명시(철산/일직)</a>
+                <a href="/anyang/index.html" class="gu-item">안양시(평촌/범계)</a>
+                <a href="/ansan/index.html" class="gu-item">안산시(중앙동/고잔동)</a>
+                <a href="/gunpo/index.html" class="gu-item">군포시(산본동)</a>
+                <a href="/guri/index.html" class="gu-item">구리시(수택동)</a>
+                <a href="/osan/index.html" class="gu-item">오산시(세교)</a>
+                <a href="/gwangju_gyeonggi/index.html" class="gu-item">경기 광주시</a>
+                <a href="/icheon/index.html" class="gu-item">이천시</a>
+                <a href="/yangju/index.html" class="gu-item">양주시(옥정)</a>
+                <a href="/uiwang/index.html" class="gu-item">의왕시</a>
+                <a href="/anseong/index.html" class="gu-item">안성시</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 마사지몽 서울 전지역 프리미엄 테라피 안내. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+"""
+
+with open("seoul/index.html", "w", encoding="utf-8") as f:
+    f.write(seoul_html_content)
+
+# 3. 메인 index.html 에 '★ 서울 전지역' 링크가 없으면 추가
+if os.path.exists("index.html"):
+    with open("index.html", "r", encoding="utf-8") as f:
+        main_content = f.read()
+    
+    if "seoul/index.html" not in main_content:
+        seoul_btn = """<div class="area-item" style="border-color: #e74c3c; background: #222634;">
+                    <a href="seoul/index.html" class="gu-link" style="color: #f1c40f; font-weight: bold;">★ 서울 전지역</a>
+                </div>\n                <div class="area-item"><a href="gangnam/index.html" """
+        main_content = main_content.replace('<div class="area-item"><a href="gangnam/index.html" ', seoul_btn, 1)
+        with open("index.html", "w", encoding="utf-8") as f:
+            f.write(main_content)
+
+print("✔ 마사지몽: seoul/index.html 생성 및 메인 홈 연결 완료!")
+'@ | Out-File -FilePath "create_massagemong_seoul.py" -Encoding utf8
+
+# 실행 및 깃허브 배포
+python create_massagemong_seoul.py
+python update_seo_keywords.py
+python generate_seo.py
+git add .
+git commit -m "마사지몽 서울 전지역 포괄 페이지(seoul/index.html) 신설 및 5개 업체 반영 배포"
+git push
