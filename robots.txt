@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://seoul-homecare.shop/sitemap.xml
+Sitemap: https://massagemong.massagemong-kr.workers.dev/sitemap.xml

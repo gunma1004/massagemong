@@ -2,7 +2,7 @@ import os
 from datetime import datetime
 
 # 💡 운영하실 도메인 주소로 입력하세요 (끝에 / 제외)
-domain = "https://seoul-homecare.shop"
+domain = "https://massagemong.massagemong-kr.workers.dev"
 today = datetime.today().strftime('%Y-%m-%d')
 
 # 1. robots.txt 생성
